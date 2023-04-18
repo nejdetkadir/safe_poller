@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    safe_poller (0.0.0)
+    safe_poller (0.0.1)
 
 GEM
   remote: https://rubygems.org/
