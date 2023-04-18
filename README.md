@@ -29,7 +29,44 @@ gem install safe_poller
 
 ## Usage
 
-TODO: Write usage instructions here
+To use SafePoller, simply call the `SafePoller.poll` method, passing in a block of code to be executed at the specified interval:
+```ruby
+poller = SafePoller.poll(interval: 2.0) do
+  # Code to be executed at 2-second intervals
+end
+```
+
+By default, the interval is set to 1 second. You can also specify the duration of the poll by using the `SafePoller.poll_for` method:
+```ruby
+poller = SafePoller.poll_for(30, interval: 2.0) do
+  # Code to be executed every 2 seconds for 30 seconds
+end
+```
+
+Or, you can specify the end time of the poll using the `SafePoller.poll_until` method:
+```ruby
+end_time = Time.now + 60
+poller = SafePoller.poll_until(end_time, interval: 2.0) do
+  # Code to be executed every 2 seconds until 1 minute from now
+end
+```
+
+You can pause and resume the poller using the `pause` and `resume` methods, respectively:
+```ruby
+poller.pause # Pauses the poller
+poller.resume # Resumes the poller
+```
+
+You can check if the poller is currently running or paused using the `running?` and `paused?` methods, respectively:
+```ruby
+poller.running? # Returns true if the poller is running, false otherwise
+poller.paused? # Returns true if the poller is paused, false otherwise
+```
+
+You can stop the poller using the `stop` method:
+```ruby
+poller.stop # Stops the poller
+```
 
 
 ## Contributing
